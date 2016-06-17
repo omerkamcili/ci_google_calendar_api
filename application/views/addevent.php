@@ -1,5 +1,4 @@
 <?php $this->load->view('header');?>
-
 <body>
 
     <div id="wrapper">
@@ -105,7 +104,6 @@
             </div>
 
         </div>
-
 
     </div>
 

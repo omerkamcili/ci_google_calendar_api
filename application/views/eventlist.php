@@ -19,7 +19,7 @@
 
             	<form action="/event/eventList" method="GET">
 
-	            	<div class="col-lg-3"><label>Start Date:</label><input type="date" name="start" class="form-control"></div>
+	            	<div class="col-lg-3"><label>Start Date:</label><input type="date" name="start" class="form-control" value=""></div>
 
 	            	<div class="col-lg-3"><label>End Date:</label><input type="date" name="end" class="form-control"></div>
 
