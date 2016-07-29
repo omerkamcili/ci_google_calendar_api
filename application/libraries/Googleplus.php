@@ -5,7 +5,7 @@ class Googleplus {
 
 	public function __construct() {
 	
-    	require APPPATH . "third_party/google-api-php-client/src/Google/autoload.php";
+    	require APPPATH . "third_party/google-api-php/src/Google/autoload.php";
 		$this->client = new Google_Client();
 		$this->client->setApplicationName('Calendar Api');
 
