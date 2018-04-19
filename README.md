@@ -2,10 +2,15 @@
 
 Welcome to Exapmle
 
-Step 1: Go to google api credentials. Take a OAuth cilient ID json config file, its [here](https://developers.google.com/google-apps/calendar/quickstart/php )
+Step 1: Go to google api credentials. Take your OAuth cilient id and secret key, its [here](https://developers.google.com/google-apps/calendar/quickstart/php ) You can use wizard on quickstart page.
 
-Step 2: Save json config file in application/config/ folder.
+Step 2: Enter your client id and secret key to application/config/calendar.php file
 
-Step 3: Go application/libraries/Googleplus file, line 13. Edit json config file name.
+Step 3: Set your application base_url on application/config/config.php
 
 Ready! its run.
+
+
+## Important
+You must enter authorization redirect URI in your google api project settings.
+For exaple **http://yourhost/auth/oauth** login progress in auth/oauth url
