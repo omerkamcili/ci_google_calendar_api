@@ -1,76 +1,80 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Event extends CI_Controller {
+class Event extends CI_Controller
+{
 
-	public function __construct(){
+    public function __construct()
+    {
 
-		parent::__construct();
-		$this->load->model('auth');
-		$this->load->model('googlecalendar');
+        parent::__construct();
+        $this->load->model('auth');
+        $this->load->model('googlecalendar');
 
-	}
+    }
 
-	public function addEvent(){
+    public function addEvent()
+    {
 
-		//date format is => 2016-06-18T17:00:00+03:00
+        //date format is => 2016-06-18T17:00:00+03:00
 
-		$post = $this->input->post();
+        $post = $this->input->post();
 
-		$data = array();
+        $data = array();
 
-		if($post){
+        if ($post) {
 
-			$event = array(
-							'summary' 		=> $post['summary'],
-							'start' 		=> $post['startDate'] . 'T' . $post['startTime'] . ':00+03:00',
-							'end' 			=> $post['endDate'] . 'T' . $post['endTime'] . ':00+03:00',
-							'description' 	=> $post['description']
+            $event = array(
+                'summary'     => $post['summary'],
+                'start'       => $post['startDate'].'T'.$post['startTime'].':00+03:00',
+                'end'         => $post['endDate'].'T'.$post['endTime'].':00+03:00',
+                'description' => $post['description'],
 
-						 );
+            );
 
-			$foo = $this->googlecalendar->addEvent('primary',$event);
+            $foo = $this->googlecalendar->addEvent('primary', $event);
 
-			if($foo->status == 'confirmed'){
+            if ($foo->status == 'confirmed') {
 
-				$data['message'] = '<div class="alert alert-success">Events created.</div>';
+                $data['message'] = '<div class="alert alert-success">Events created.</div>';
 
-			}
+            }
 
 
-		}
+        }
 
-		$this->load->helper('form');
-		$this->load->view( 'addevent' ,$data);
+        $this->load->helper('form');
+        $this->load->view('addevent', $data);
 
-	}
+    }
 
-	public function eventList(){
+    public function eventList()
+    {
 
-		$get = $this->input->get();
+        $get = $this->input->get();
 
-		if($get){
+        if ($get) {
 
-			$start 	= $get['start'] . ' 00:00:00';
+            $start = $get['start'].' 00:00:00';
 
-			$end 	= $get['end'] . ' 23:59:59';
+            $end = $get['end'].' 23:59:59';
 
-			$data['title'] = 'Events of between ' . $get['start'] . " and  " . $get['end'];
+            $data['title'] = 'Events of between '.$get['start']." and  ".$get['end'];
 
-		}else{
+        } else {
 
-			$start = false;
+            $start = false;
 
-			$end   = false;
+            $end = false;
 
-			$data['title'] = 'Events of today';
+            $data['title'] = 'Events of today';
 
-		}
+        }
 
-		$data['events'] = $this->googlecalendar->getEvents('primary',$start,$end,40);
+        $data['events'] = $this->googlecalendar->getEvents('primary', $start, $end, 40);
 
-		$this->load->view('eventlist',$data);
+        $this->load->view('eventlist', $data);
 
-	}
+    }
 
 }

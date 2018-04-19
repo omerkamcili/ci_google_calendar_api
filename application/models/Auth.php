@@ -1,29 +1,27 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Auth extends CI_Model {
+class Auth extends CI_Model
+{
 
 
-	public function __construct(){
+    public function __construct()
+    {
 
-		parent::__construct();
+        parent::__construct();
 
-		$this->load->model('googlecalendar');
+        $this->load->model('googlecalendar');
 
-		$this->load->library('session');
+        $this->load->library('session');
 
-		if(!$this->googlecalendar->isLogin()){
+        if ( ! $this->googlecalendar->isLogin()) {
 
-			$this->session->sess_destroy();
+            $this->session->sess_destroy();
 
-			redirect('/auth/login','refresh');
-			
-			exit;
+            redirect('/auth/login', 'refresh');
 
-		}
+        }
 
-	}
-
-
+    }
 
 }
