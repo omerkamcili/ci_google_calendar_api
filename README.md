@@ -13,4 +13,4 @@ Ready! its run.
 
 ## Important
 You must enter authorization redirect URI in your google api project settings.
-For exaple **http://yourhost/auth/oauth** login progress in auth/oauth url
+For example **http://yourhost/auth/oauth** login progress in auth/oauth url
